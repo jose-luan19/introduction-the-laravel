@@ -1,0 +1,11 @@
+# Anotações pessoais do curso de Laravel 6.*
+
+## Primeiras impressõs: a pasta app possui basicamente a lógica da aplicação e a subpasta view que fica dentro de resources possui a parte de interface, ou seja o que o usario irá de fato utilizar
+
+## O Laravel aparentemente usa com padrão de projeto default o MVC, e na parte de banco o padrão factory
+
+## As routes são utilizadas para passar paramentros para as views, com a facilidade do compact 
+
+## O Laravel não possui o poder de auto-update de banco/schema, mas depois de criar na mão o resto é com ele
+
+## comando para registrar a table migration: php artisan migrate:install

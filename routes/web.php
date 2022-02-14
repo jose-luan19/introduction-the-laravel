@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $helloWord = 'Hello Word LUAN';
+    return view('welcome', compact('helloWord'));
 });
