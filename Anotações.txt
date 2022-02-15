@@ -11,3 +11,46 @@
 ## comando para registrar a table migration: php artisan migrate:install
 
 ## Os modelos de tabelas ficam na pasta de migration e para subir para o banco, deve-se executar as funções up via terminal
+
+## Comando para criar tabela via artisan: php artisan make:migration create_[nomeTabela]_table
+
+## Comando para rotar as migrations: php artisan migrate
+
+## Comando para retornar ações de migração: php artisan migrate:rollback [optional] --steps=1
+
+## Comando para sicronizar o banco com as migrations: php artisan migrate:fresh
+Obs.* se for criada tables sem o migration esse comando apaga todas elas, pois ele foca na tabela onde está registrada as migrations
+
+## comando para sicronizar todas as tabelas: php artisan migrate:refresh
+Obs.* esse comando atualiza tudo e não apaga as tables criadas sem o migration
+
+## Seeders são as funções para população do banco, comando para criar: php artisan make:seeder [NameTable]TableSeeder
+
+## comando para alimentar o banco: php artisan db:seed
+
+## comando para apagar e atualizar as tabelas e alimenta-las: php artisan migrate:refresh --seed
+
+## Para criar model's que irá representar nossas tabelas no banco, usa-se: php artisan make:model [Model]
+
+## Criar model e arquivo migration referenciando o model: php artisan make:model [Model] -m
+
+## A ORM utilizada pelo laravel é o Eloquent
+Rememeber: Mapeamento objeto-relacional é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais.
+
+## Por default os models são associados as tabelas onde é feito a seguinte afirmação Model: User -> Table: users . Se o banco e os models não possuirem esse padrão é preciso informar ao Laravel qual table aquele model representa.
+
+## É possivel utilizar dois padrões na ORM: Active Record e o Mass Assignment & Mass Update
+
+## $fillable: para construir um novo registro esses são os campos obrigatorios a serem preenchidos
+
+## $hidden: Ao realizar uma consulta, esse hiden esconde os campos que foram declarados nele
+
+## $cast: Ao fazer a consulta, é possivel fazer a consersão de tipo no retorno json ex.: 'name' => 'boolean'
+
+
+## Relacionamento Eloquent:
+	1:1 - hasOne e belongsTo
+	1:N - hasMany e belongsTo
+	N:N - belongsToMany
+	
+## Por padrão o Laravel irá buscar a tabela de pivô usando os nomes da tabelas em ordem alfabetica: Ex.: Tables - products & categories, ele irá buscsar a table categories_products. Caso tenha um nome diferente do padrão, deve-se informar na function do belongsToMany como o segundo parametro 
