@@ -47,10 +47,30 @@ Rememeber: Mapeamento objeto-relacional é uma técnica de desenvolvimento utili
 
 ## $cast: Ao fazer a consulta, é possivel fazer a consersão de tipo no retorno json ex.: 'name' => 'boolean'
 
-
 ## Relacionamento Eloquent:
 	1:1 - hasOne e belongsTo
 	1:N - hasMany e belongsTo
 	N:N - belongsToMany
 	
 ## Por padrão o Laravel irá buscar a tabela de pivô usando os nomes da tabelas em ordem alfabetica: Ex.: Tables - products & categories, ele irá buscsar a table categories_products. Caso tenha um nome diferente do padrão, deve-se informar na function do belongsToMany como o segundo parametro 
+
+## Funcão each() após o create faz com que a cada registro criado em uma tabela eu posso salvar outro registro em outra tabela e já associa a chave enstrangeira
+
+## Para realizar querys INNER'S JOIN'S de uma relação 1:1, é possivel bucar em um model com o find() e associar a um outro model sem precisar de chamada de metodos
+Obs1.: Nas relações 1:1 e 1:N o Laravel nos retorna o objeto, já em relações N:N ele retorna uma Collection
+
+## Comando para gerar Controllers: php artisan make:contoller [CaminhoDoController/NomeDoController]
+
+## As Routes possuem os seguintes metodos:
+Route::get -- consulta
+Route::post -- cria
+Route::put -- atualiza
+Route::patch -- atualiza
+Route::delete
+Route::options -- dentro do HTTP ela retorna qual cabeçalho a rota especifica responde
+onde os parametros são o caminho e uma function
+
+## Os controllers irá carregar o html a partir das views, com o comando view('[CAMINHO_DA_VIEW]')
+Obs.: Ainda é possivel passar dados para view com o compact('[OBJETO]')
+
+## Toke de autorização de insersão de conteudo: {{csrf_token}}

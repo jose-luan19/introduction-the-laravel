@@ -53,6 +53,74 @@ Route::get('/model', function(){
     //$user = $user->update return true or false
     //$user->update return object json
 
-    return \App\User::all();
+    /* Querys Join's */
+    // $user = \App\User::find(5);
+    // return $user->store();
+    // dd($user->store());
+    // dd($user->store()->count());
+
+    // $loja = \App\Store::find(1);
+    // return $loja->products; // $loja->products()->where('id',40)->get();
+
+    /* Criar a loja para um usuario */
+    // $user = \App\User::find(15);
+    // $store=$user->store()->create([
+    //     'name'=> 'Loja Teste',
+    //     'description'=>'Loja teste de produtos',
+    //     'mobile_phone'=>'XX-XXXX-XXXX',
+    //     'phone'=>'XX-XXXX-XXXX',
+    //     'slug'=>'loja-teste'
+    // ]);
+    // dd($store);
+
+    
+
+    /* Criar produto para uma loja */
+    // $store = \App\Store::find(41);
+    // $product = $store->products()->create([
+    //     'name'=>'Notebook',
+    //     'description'=>'Descricao Note',
+    //     'body'=>'body',
+    //     'price'=>10.0,
+    //     'slug'=>'notebook'
+    // ]);
+    // dd($product);
+
+    /* Criar uma categoria */
+    // \App\Category::create([
+    //     'name'=>'Game',
+    //     'description'=>null,
+    //     'slug'=>'game'
+    // ]);
+
+    // \App\Category::create([
+    //     'name'=>'PC',
+    //     'description'=>null,
+    //     'slug'=>'pc'
+    // ]);
+    // return \App\Category::all();
+
+    /* Adicionar um produto a uma categoria ou vice-versa */
+    // $product = \App\Product::find(41);
+    // $product->categories()->attach([2]);//adicionar na tabela pivô, um por vez
+    // $product->categories()->sync([2,1]);//faz a sincronização na tabela, ou seja irá remover ou adicionar a partir dos id's que estão no parametro
+    // $product->categories()->detach([2]);//remover na tabela pivô
+
+    $product = \App\Product::find(41);
+
+
+    // $categoria = \App\Category::find(1);
+    // $categoria->products->a;
+
+    return $product->categories;
+
+});
+Route::prefix('admin')->namespace('Admin')->group(function(){
+
+    Route::get('/stores', 'StoreController@index');
+
+    Route::get('/stores/create', 'StoreController@create');
+
+    Route::post('/stores/store', 'StoreController@store');
 
 });
