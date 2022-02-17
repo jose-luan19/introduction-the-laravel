@@ -116,11 +116,12 @@ Route::get('/model', function(){
 
 });
 Route::prefix('admin')->namespace('Admin')->group(function(){
+    Route::prefix('stores')->group(function(){
 
-    Route::get('/stores', 'StoreController@index');
+        Route::get('/', 'StoreController@index');
 
-    Route::get('/stores/create', 'StoreController@create');
+        Route::get('/create', 'StoreController@create');
 
-    Route::post('/stores/store', 'StoreController@store');
-
+        Route::post('/store', 'StoreController@store');
+    });
 });

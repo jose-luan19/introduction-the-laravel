@@ -72,3 +72,5 @@ onde os parametros são o caminho e uma function
 
 ## Os controllers irá carregar o html a partir das views, com o comando view('[CAMINHO_DA_VIEW]')
 Obs.: Ainda é possivel passar dados para view com o compact('[OBJETO]')
+
+## Toke de autorização de insersão de conteudo: {{csrf_token}}
