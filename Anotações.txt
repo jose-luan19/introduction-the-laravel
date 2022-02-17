@@ -75,3 +75,22 @@ Route::prefix()->namespace()->group(function(){})
 Obs.: Ainda é possivel passar dados para view com o compact('[OBJETO]')
 
 ## Token de autorização de insersão de conteudo: {{csrf_token}}
+
+## Criar templates é preciso prepara-lo para exportação com @yield(NOME_TEMPLATE)
+
+## Para adicionar templates a paginas, deve exportar com o @extends('[CAMINHO.NOME_ARQUIVO]')
+
+## Em seguida definir onde o template será usado com @section('NOME_TEMPLATE') e @endsection
+
+## Uma boa prática, referenciar os links por apelidos definidos no name das Routes.
+
+## Comando para adicionar extensões: composer req [laracasts/flash]
+
+## Ferramenta de mensagens laracasts/flash
+
+## Para criar um Controller com recursos bonitinhos: php artisan make:contoller [CaminhoDoController/NomeDoController] -r
+Obs.: E se utilizar o Route::resource('[caminho]','[controller]') ele já cria todas as conexões de rotas
+
+## Se importar o model ao controller e criar o construtor do controller que tem como parametro o model e a variavel, o Laravel realiza a injenção de dependência e quando der um new no controller automaticamente dará um new no model. Isso irá ajudar nas chamadas de metodos do model.
+
+## 
