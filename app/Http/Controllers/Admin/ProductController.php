@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->product->paginate(10);
-        return \view('admin.products.index',compact('products'));
+        return view('admin.products.index',compact('products'));
     }
     
     /**
@@ -47,7 +47,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $data = $request->all();
+
+        $store = \App\Store::find($data['store']);
+
+        $store->products()->create($data);
+
+        \flash('Produto criado com sussesso')->success();
+
+        return \redirect()->route('admin.products.index');
     }
     
     /**
@@ -69,8 +78,8 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        $product = $this->product->find($product);
-        return \view('admin.products.create',compact('product'));
+        $product = $this->product->findOrFail($product);
+        return \view('admin.products.edit',compact('product'));
     }
     
     /**
@@ -82,7 +91,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $product)
     {
-        //
+        $data = $request->all();
+
+        $product = $this->product->find($product);
+        $product->update($data);
+        
+        \flash('Produto atualizado com sussesso')->success();
+
+        return \redirect()->route('admin.products.index');
     }
 
     /**
@@ -93,6 +109,11 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
-        //
+        $product = $this->product->find($product);
+        $product->delete();
+        
+        \flash('Produto removido com sussesso')->success();
+
+        return \redirect()->route('admin.products.index');
     }
 }

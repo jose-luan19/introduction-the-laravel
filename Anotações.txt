@@ -74,7 +74,7 @@ Route::prefix()->namespace()->group(function(){})
 ## Os controllers irá carregar o html a partir das views, com o comando view('[CAMINHO_DA_VIEW]')
 Obs.: Ainda é possivel passar dados para view com o compact('[OBJETO]')
 
-## Token de autorização de insersão de conteudo: {{csrf_token}}
+## Token de autorização de insersão de conteudo: {{csrf_token}} ou @csrf
 
 ## Criar templates é preciso prepara-lo para exportação com @yield(NOME_TEMPLATE)
 
@@ -93,4 +93,7 @@ Obs.: E se utilizar o Route::resource('[caminho]','[controller]') ele já cria t
 
 ## Se importar o model ao controller e criar o construtor do controller que tem como parametro o model e a variavel, o Laravel realiza a injenção de dependência e quando der um new no controller automaticamente dará um new no model. Isso irá ajudar nas chamadas de metodos do model.
 
-## 
+## Para remover registro usando o request DELETE é preciso que seja solicitado esse tipo de solicitação, não será feito mais com o verbo GET
+
+## É possivel fazer com que o formulario trabalhe com os outros methods http através com um input:hidden e com o value contendo o nome do verbo HTTP
+OU: @method("[method]")

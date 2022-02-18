@@ -9,23 +9,32 @@
                 <th>#</th>
                 <th>Nome</th>
                 <th>Preço</th>
+                <th>Loja</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
+            @foreach ($products as $p)
             <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->name}}</td>
+                <td>{{$p->id}}</td>
+                <td>{{$p->name}}</td>
+                <td>R$ {{number_format($p->price,2,',','.')}}</td>
+                <td>{{$p->store->name}}</td>
                 <td>
-                    <a href="{{route('admin.products.edit',['product'=> $product->id])}}" class="btn btn-sm btn-secondary">Editar</a>
-                    <a href="{{route('admin.products.destroy',['product'=> $product->id])}}" class="btn btn-sm btn-danger">Remover</a>
+                    <div class="btn-group">
+                        <form action="{{route('admin.products.destroy',['product'=> $p->id])}}" method="post">
+                        <a href="{{route('admin.products.edit',['product'=> $p->id])}}" class="btn btn-sm btn-secondary">Editar</a>
+                            @csrf
+                            @method("DELETE")
+                            <button class="btn btn-sm btn-danger" type="submit">Remover</button>
+                        </form>
+                    </div>                    
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
-    {{$product->links()}}
+    {{$products->links()}}
 
 @endsection
