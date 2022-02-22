@@ -6,7 +6,7 @@
 
 ## As routes são utilizadas para passar paramentros para as views, com a facilidade do compact 
 
-## O Laravel não possui o poder de auto-update de banco/schema, mas depois de criar na mão o resto é com ele
+## O Laravel possui migrations
 
 ## comando para registrar a table migration: php artisan migrate:install
 
@@ -97,3 +97,34 @@ Obs.: E se utilizar o Route::resource('[caminho]','[controller]') ele já cria t
 
 ## É possivel fazer com que o formulario trabalhe com os outros methods http através com um input:hidden e com o value contendo o nome do verbo HTTP
 OU: @method("[method]")
+
+## Instalação do "automatizador" de autenticação: composer require laravel/ui "^[version]"
+
+## Criação de views, routes e controller de login: php artisan ui:auth
+
+## middleware meio para verificar se o usuario está logado
+obs. código ou programa entre requisição e a aplicação
+
+## É possivel associar middleware para rotas especificas, por exemplo só irá para tal rota caso a checagem do middleware estej ok
+
+## Route::group: gerencia um conjunto de rotas a partir de um middleware e uma function
+
+## Condicionais de views @auth- verficica se está logado ; @guest- verifica se não está logado
+
+## auth()->user() : resgata objeto em relação o usuario logado  
+
+## link validations request: https://laravel.com/docs/6.x/validation#available-validation-rules
+
+## Para aplicar validações de campos, deve-se criar uma Request para cada model especifico, e implmentar em quais campos deve-se validar e qual o tipo de validação
+Comando: php artisan make:request [nome do request]
+
+## E utilizar nos controllers, a Request que criou, isso já irá validar os inputs programados no Request
+
+## Para  visualizar os erros na view, basta usar as tags:
+@error 
+	{{$message}} 
+@enderror
+
+## Para que a navegação fique com o item ativo em todas as url's 'filhas' deve se usar o *, parecido com o import de um biblioteca por completo em java 'admin/stores*'
+
+## Para criar middlewares proprios usa-se o comando: php artisan make:middleware [nome do middleware]. E deve registrar no arquivo Kernel.php na function routeMiddleware como deve ser a chamada do middleware criado 
