@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use \App\Http\Requests\ProductRequest;
 
 
 class ProductController extends Controller
@@ -25,7 +26,7 @@ class ProductController extends Controller
         $products = $this->product->paginate(10);
         return view('admin.products.index',compact('products'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -34,23 +35,24 @@ class ProductController extends Controller
     public function create()
     {
         $stores = \App\Store::all(['id','name']);
-        
+
 
         return \view('admin.products.create',compact('stores'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         // dd($request->all());
         $data = $request->all();
 
-        $store = \App\Store::find($data['store']);
+        // $store = \App\Store::find($data['store']);
+        $store = auth()->user()->store;
 
         $store->products()->create($data);
 
@@ -58,7 +60,7 @@ class ProductController extends Controller
 
         return \redirect()->route('admin.products.index');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -69,7 +71,7 @@ class ProductController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,7 +83,7 @@ class ProductController extends Controller
         $product = $this->product->findOrFail($product);
         return \view('admin.products.edit',compact('product'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -89,13 +91,13 @@ class ProductController extends Controller
      * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product)
+    public function update(ProductRequest $request, $product)
     {
         $data = $request->all();
 
         $product = $this->product->find($product);
         $product->update($data);
-        
+
         \flash('Produto atualizado com sussesso')->success();
 
         return \redirect()->route('admin.products.index');
@@ -111,7 +113,7 @@ class ProductController extends Controller
     {
         $product = $this->product->find($product);
         $product->delete();
-        
+
         \flash('Produto removido com sussesso')->success();
 
         return \redirect()->route('admin.products.index');
