@@ -32,7 +32,7 @@ Route::get('/model', function(){
     // $user->name = 'Usuario Teste';
     // $user->email = 'email@tests.com';
     // $user->password = bcrypt('123456789asd');
-    
+
     // return $user->save();
 
     /* Mass Assignment & Mass Update*/
@@ -73,7 +73,7 @@ Route::get('/model', function(){
     // ]);
     // dd($store);
 
-    
+
 
     /* Criar produto para uma loja */
     // $store = \App\Store::find(41);
@@ -119,22 +119,25 @@ Route::get('/model', function(){
 Route::group(["middleware"=>['auth']],function(){
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
         // Route::prefix('stores')->name('stores.')->group(function(){
-    
+
         //     Route::get('/', 'StoreController@index')->name('index');
-    
+
         //     Route::get('/create', 'StoreController@create')->name('create');
-            
+
         //     Route::post('/store', 'StoreController@store')->name('store');
-            
+
         //     Route::get('/{store}/edit', 'StoreController@edit')->name('edit');
-            
+
         //     Route::post('/update/{store}', 'StoreController@update')->name('update');
-            
+
         //     Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
         // });
-    
+
         Route::resource('stores','StoreController');
         Route::resource('products','ProductController');
+        Route::resource('categories','CategoryController');
+
+        Route::post('photos/remove','ProductPhotoController@removePhoto')->name('photo.remove');
     });
 });
 
