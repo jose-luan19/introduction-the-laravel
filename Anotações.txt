@@ -136,3 +136,5 @@ Comando: php artisan make:request [nome do request]
 ## No upload de imagens, o $request->file('') retorna um objeto para facilitar essa inserção
 
 ## Traits são tipos de interfaces da OO com php onde armazena alguns metodos
+
+## para vailidar todos os elementos de um array de inputs, deve usa a notação ponto de um por um (photos.image1) ou todos de uma vez (photos.*)
