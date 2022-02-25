@@ -8,12 +8,12 @@ class Store extends Model
 {
     //protected $table = 'tb_store'; //Atributo para informar a ORM qual o nome da tabela no meu DB
 
-    protected $fillable = ['name','description','phone','mobile_phone','slug'];
+    protected $fillable = ['name','description','phone','mobile_phone','slug','logo'];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
-    
+
     public function products(){
         return $this->hasMany(Product::class);
     }

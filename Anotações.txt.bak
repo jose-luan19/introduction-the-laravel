@@ -132,3 +132,5 @@ Comando: php artisan make:request [nome do request]
 ## As migrations devem conter nomes bem descritivos
 
 ## Criar migration para edição de tabelas: php artisan make:migration [NOME_MIGRATION] --table=[NOME_TABELA]
+
+## No upload de imagens, o $request->file('') retorna um objeto para facilitar essa inserção

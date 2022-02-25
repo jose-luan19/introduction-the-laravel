@@ -134,3 +134,5 @@ Comando: php artisan make:request [nome do request]
 ## Criar migration para edição de tabelas: php artisan make:migration [NOME_MIGRATION] --table=[NOME_TABELA]
 
 ## No upload de imagens, o $request->file('') retorna um objeto para facilitar essa inserção
+
+## Traits são tipos de interfaces da OO com php onde armazena alguns metodos
