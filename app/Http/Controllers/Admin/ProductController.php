@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use \App\Http\Requests\ProductRequest;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -54,6 +55,7 @@ class ProductController extends Controller
     {
         // dd($request->all());
         $data = $request->all();
+        $data['slug'] = Str::slug($data['name'], '-');
         $categories = $request->get('categories', null);
 
         // $store = \App\Store::find($data['store']);
@@ -108,6 +110,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $product)
     {
         $data = $request->all();
+        $data['slug'] = Str::slug($data['name'], '-');
         $categories = $request->get('categories', null);
 
         $product = $this->product->find($product);
