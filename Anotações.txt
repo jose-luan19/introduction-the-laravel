@@ -156,3 +156,26 @@ Comando: php artisan make:request [nome do request]
 ## É precisso ter um link simbolico na pasta public linkando com o storage/app/public, para isso usa-se: php artisan storage:link
 
 ## aprofundar mais um pouco nessas sessões: session() https://blog.especializati.com.br/aprenda-como-utilizar-sessoes-no-laravel/
+
+## Há metodos de autenticação para redirecionamento após o checkout:
+Login -> authenticated()
+Register -> registered()
+
+## Realizar a instalação do sdk da pagseguro e caso haja erro verificar as extensões.
+
+## Trazer as configurações para .env
+PAGSEGURO_ENV=sandbox
+PAGSEGURO_EMAIL=joseluan620@hotmail.com
+PAGSEGURO_TOKEN_SANDBOX=13AD3F6D77D24D5F879C2972475B1CD0
+PAGSEGURO_CHARSET=UTF-8
+
+
+## Utilização dos providers para incialização da session via api da pagseguro
+
+## Javascript do ambiente sandbox: https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js
+
+## O bloqueador de ADS dificulta na consulta a api da pagseguro
+
+## É utlizado ajax para realizar requisições ao back-end
+
+## pode acontecer das requisições a api da pagseguro, falharem, ou até mesmo na hora de criar uma session para ela

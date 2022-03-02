@@ -150,3 +150,9 @@ Route::get('/model', function(){
 
 });
 // Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/', 'CheckoutController@index')->name('index');
+    Route::post('/proccess', 'CheckoutController@proccess')->name('proccess');
+    Route::get('/thanks', 'CheckoutController@thanks')->name('thanks');
+});
