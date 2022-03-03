@@ -1231,10 +1231,6 @@
                 }
             ],
             "description": "Biblioteca de integração com o PagSeguro",
-            "support": {
-                "issues": "https://github.com/pagseguro/pagseguro-php-sdk/issues",
-                "source": "https://github.com/pagseguro/pagseguro-php-sdk/tree/6.0.0"
-            },
             "time": "2018-12-11T11:37:37+00:00"
         },
         {
@@ -6397,5 +6393,5 @@
         "php": "^7.2.5|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "1.1.0"
 }
