@@ -1,10 +1,24 @@
 # Anotações pessoais do curso de Laravel 6.*
 
+## Minhas extensões para vscode: (
+	Eclipse Keymap;
+	Laravel Blade dev(amirmarmul);
+	Laravel goto view dev(codingyu);
+	Laravel intellisense dev(Mohamed Be);
+	Laravel Model Snippets dev(Andy Hinkle);
+	Laravel Snippets dev(Winnie Lin);
+	laravel-goto-controller dev(stef-k);
+    Laravel Blade Snippets dev(Winnie Lin);
+    Laravel Blade Spacer dev(Austen Cameron);
+	PHP Intelephense dev(Ben Mewburn);
+	PHP DocBlocker dev(Neil Brayfield);
+)
+
 ## Primeiras impressõs: a pasta app possui basicamente a lógica da aplicação e a subpasta view que fica dentro de resources possui a parte de interface, ou seja o que o usario irá de fato utilizar
 
 ## O Laravel aparentemente usa com padrão de projeto default o MVC, e na parte de banco o padrão factory
 
-## As routes são utilizadas para passar paramentros para as views, com a facilidade do compact 
+## As routes são utilizadas para passar paramentros para as views, com a facilidade do compact
 
 ## O Laravel possui migrations
 
@@ -51,8 +65,8 @@ Rememeber: Mapeamento objeto-relacional é uma técnica de desenvolvimento utili
 	1:1 - hasOne e belongsTo
 	1:N - hasMany e belongsTo
 	N:N - belongsToMany
-	
-## Por padrão o Laravel irá buscar a tabela de pivô usando os nomes da tabelas em ordem alfabetica: Ex.: Tables - products & categories, ele irá buscsar a table categories_products. Caso tenha um nome diferente do padrão, deve-se informar na function do belongsToMany como o segundo parametro 
+
+## Por padrão o Laravel irá buscar a tabela de pivô usando os nomes da tabelas em ordem alfabetica: Ex.: Tables - products & categories, ele irá buscsar a table categories_products. Caso tenha um nome diferente do padrão, deve-se informar na function do belongsToMany como o segundo parametro
 
 ## Funcão each() após o create faz com que a cada registro criado em uma tabela eu posso salvar outro registro em outra tabela e já associa a chave enstrangeira
 
@@ -88,7 +102,7 @@ Obs.: Ainda é possivel passar dados para view com o compact('[OBJETO]')
 
 ## Ferramenta de mensagens laracasts/flash
 
-## Para criar um Controller com recursos bonitinhos: php artisan make:contoller [CaminhoDoController/NomeDoController] -r
+## Para criar um Controller com recursos bonitinhos: php artisan make:controller [CaminhoDoController/NomeDoController] -r
 Obs.: E se utilizar o Route::resource('[caminho]','[controller]') ele já cria todas as conexões de rotas
 
 ## Se importar o model ao controller e criar o construtor do controller que tem como parametro o model e a variavel, o Laravel realiza a injenção de dependência e quando der um new no controller automaticamente dará um new no model. Isso irá ajudar nas chamadas de metodos do model.
@@ -105,13 +119,13 @@ OU: @method("[method]")
 ## middleware meio para verificar se o usuario está logado
 obs. código ou programa entre requisição e a aplicação
 
-## É possivel associar middleware para rotas especificas, por exemplo só irá para tal rota caso a checagem do middleware estej ok
+## É possivel associar middleware para rotas especificas, por exemplo só irá para tal rota caso a checagem do middleware esteja ok
 
 ## Route::group: gerencia um conjunto de rotas a partir de um middleware e uma function
 
 ## Condicionais de views @auth- verficica se está logado ; @guest- verifica se não está logado
 
-## auth()->user() : resgata objeto em relação o usuario logado  
+## auth()->user() : resgata objeto em relação o usuario logado
 
 ## link validations request: https://laravel.com/docs/6.x/validation#available-validation-rules
 
@@ -121,10 +135,47 @@ Comando: php artisan make:request [nome do request]
 ## E utilizar nos controllers, a Request que criou, isso já irá validar os inputs programados no Request
 
 ## Para  visualizar os erros na view, basta usar as tags:
-@error 
-	{{$message}} 
+@error
+	{{$message}}
 @enderror
 
 ## Para que a navegação fique com o item ativo em todas as url's 'filhas' deve se usar o *, parecido com o import de um biblioteca por completo em java 'admin/stores*'
 
-## Para criar middlewares proprios usa-se o comando: php artisan make:middleware [nome do middleware]. E deve registrar no arquivo Kernel.php na function routeMiddleware como deve ser a chamada do middleware criado 
+## Para criar middlewares proprios usa-se o comando: php artisan make:middleware [nome do middleware]. E deve registrar no arquivo Kernel.php na function routeMiddleware como deve ser a chamada do middleware criado
+
+## As migrations devem conter nomes bem descritivos
+
+## Criar migration para edição de tabelas: php artisan make:migration [NOME_MIGRATION] --table=[NOME_TABELA]
+
+## No upload de imagens, o $request->file('') retorna um objeto para facilitar essa inserção
+
+## Traits são tipos de interfaces da OO com php onde armazena alguns metodos
+
+## para vailidar todos os elementos de um array de inputs, deve usa a notação ponto de um por um (photos.image1) ou todos de uma vez (photos.*)
+
+## É precisso ter um link simbolico na pasta public linkando com o storage/app/public, para isso usa-se: php artisan storage:link
+
+## aprofundar mais um pouco nessas sessões: session() https://blog.especializati.com.br/aprenda-como-utilizar-sessoes-no-laravel/
+
+## Há metodos de autenticação para redirecionamento após o checkout:
+Login -> authenticated()
+Register -> registered()
+
+## Realizar a instalação do sdk da pagseguro e caso haja erro verificar as extensões.
+
+## Trazer as configurações para .env
+PAGSEGURO_ENV=sandbox
+PAGSEGURO_EMAIL=joseluan620@hotmail.com
+PAGSEGURO_TOKEN_SANDBOX=13AD3F6D77D24D5F879C2972475B1CD0
+PAGSEGURO_CHARSET=UTF-8
+
+
+## Utilização dos providers para incialização da session via api da pagseguro
+
+## Javascript do ambiente sandbox: https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js
+
+## O bloqueador de ADS dificulta na consulta a api da pagseguro
+
+## É utlizado ajax para realizar requisições ao back-end
+
+## pode acontecer das requisições a api da pagseguro, falharem, ou até mesmo na hora de criar uma session para ela

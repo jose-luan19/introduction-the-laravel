@@ -13,7 +13,9 @@
         "laracasts/flash": "^3.2",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "1.2"
+        "laravel/ui": "1.2",
+        "pagseguro/pagseguro-php-sdk": "^6.0",
+        "spatie/laravel-sluggable": "2.3"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",
