@@ -1,4 +1,8 @@
-Comandos para execução do app com docker:
+### Adjust your .env
+<a href="https://github.com/jose-luan19/introduction-the-laravel/blob/master/.env.example">.env </a>
+# After
+
+Commands for execute app with docker:
 
 setup:
 
