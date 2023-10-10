@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  laravel-docker:
+    container_name: laravel-docker
+    build: .
+    depends_on:
+      - mysql_db
+    volumes:
+      - ./:/var/www/html
+      - /var/www/html/vendor
+      - /var/www/html/node_modules
+    ports:
+      - 8000:8000
+    networks:
+      - db
+
+  mysql_db:
+    image: mysql
+    container_name: db_laravel
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+    ports:
+    - 4000:3306
+    networks:
+      - db
+
+networks:
+  db:

@@ -12,4 +12,15 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .browserSync({
+        proxy: 'laravel-docker', // Substitua com o domínio da sua aplicação
+        port: 8000,
+        open: false, // Não abra automaticamente o navegador
+        files: [
+            'app/**/*.php', // Monitora arquivos PHP
+            'resources/views/**/*.php', // Monitora arquivos de visualização PHP
+            'public/**/*.js', // Monitora arquivos JS
+            'public/**/*.css', // Monitora arquivos CSS
+        ],
+    });
