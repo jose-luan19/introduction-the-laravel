@@ -25,8 +25,8 @@ data:
 	docker exec laravel-docker bash -c "php artisan db:seed"
 link storage, need for link images in storage:
 
-    php artisan storage:link
+    docker exec laravel-docker bash -c "php artisan storage:link"
 
 generate key, if need:
 
-    php artisan key:generate
+    docker exec laravel-docker bash -c "php artisan key:generate"
